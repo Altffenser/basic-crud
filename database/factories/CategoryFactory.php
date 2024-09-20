@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\PostCategoryEnum;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Override;
@@ -22,7 +23,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->unique()->words(2, true),
+            'title' => $this->faker->unique()->randomElement(PostCategoryEnum::cases())->getLabel(),
+            'icon' => $this->faker->randomElement(PostCategoryEnum::cases())->getIcon(),
         ];
     }
 }

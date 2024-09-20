@@ -14,11 +14,11 @@
     </div>
 </div>
 <div class="px-3 py-4 bg-white dark:bg-gray-800">
-    <div class="mb-5">
-        <div class="trix-content prose dark:text-white text-justify">
-            {!! $post->content !!}
-        </div>
+
+    <div class="trix-content prose-lg text-md dark:text-white">
+        {!! $post->content !!}
     </div>
+
     <div class="px-3 py-4">
         <x-box-module title="Tags">
             @include('posts.modules.sh-post-tags')

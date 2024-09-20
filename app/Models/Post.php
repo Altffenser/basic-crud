@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Builders\PostBuilder;
 use App\Enums\FeaturedStatus;
+use App\Enums\PostCategoryEnum;
 use App\Traits\HasFavorites;
 use App\Traits\Pointable;
 use Database\Factories\PostFactory;

@@ -1,5 +1,6 @@
 @props([
     'title' => $title,
+    'subtitle' => null,
     'href' => null,
     'icon' => 'info-circle',
 ])

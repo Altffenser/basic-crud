@@ -24,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @mixin Model
  */
 class Category extends Model
+
 {
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
@@ -37,6 +38,7 @@ class Category extends Model
      */
     protected $fillable = [
         'title',
+        'icon',
     ];
 
     /**

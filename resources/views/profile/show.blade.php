@@ -6,12 +6,12 @@
         <!-- Avatar Container -->
         <div class="relative">
             <!-- User Avatar -->
-            <img class="w-40 h-40 rounded-full object-cover" src="{{ $user->profile->photo }}" alt="{{ $user->name }}'s photo"/>
+            <img class="w-40 h-40 rounded shadow object-cover" src="{{ $user->profile->photo }}" alt="{{ $user->name }}'s photo"/>
             <!-- Online Status Dot -->
             @if($user->isOnline())
-                <div class="absolute -right-3 bottom-5 h-4 w-4 sm:top-2 rounded-full bg-green-400 sm:invisible md:visible" title="User is online"></div>
+                <div class="absolute -right-2 h-4 w-4 sm:top-2 rounded-full bg-green-400 sm:invisible md:visible border-2 border-white" title="User is online"></div>
             @else
-                <div class="absolute -right-3 bottom-5 h-4 w-4 sm:top-2 rounded-full bg-red-400 sm:invisible md:visible" title="User is offline"></div>
+                <div class="absolute -right-2 h-4 w-4 sm:top-2 rounded-full bg-red-500 sm:invisible md:visible border-2 border-white" title="User is offline"></div>
             @endif
         </div>
 
