@@ -3,8 +3,7 @@
         <x-box-module title="{{ '@' . $post->user->profile->username }}" href="{{ route('profile.show', ['user' => $post->user]) }}" icon="code text-2xl">
             <div class="grid sm:gap-x-2 sm:grid-cols-7 sm:text-left auto-cols-max items-start">
                 <div class="col-span-4">
-                    {{--                    <img class="rounded-full mb-5 max-w-46" src="{{ $post->user->profile->photo }}" alt="">--}}
-                    <img class="w-44 rounded shadow" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Default avatar">
+                    <img class="w-44 rounded shadow" src="{{ $post->user->profile->photo }}" alt="">
                 </div>
                 <div class="col-span-3 h-full">
                     <div class="flex flex-col h-full place-content-between">

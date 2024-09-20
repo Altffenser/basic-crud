@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Profile;
+use App\Traits\HasDiceBearAvatar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use LasseRafn\InitialAvatarGenerator\InitialAvatar;
 use Override;
 
 /**
@@ -16,6 +16,8 @@ use Override;
  */
 class ProfileFactory extends Factory
 {
+    use HasDiceBearAvatar;
+
     /**
      * Define the model's default state.
      *
@@ -33,7 +35,8 @@ class ProfileFactory extends Factory
             'facebook' => $this->faker->url,
             'photo' => function () {
                 $name = Str::random(40).'.png';
-                Storage::disk('public')->put($name, (new InitialAvatar)->name($name)->size(192)->rounded()->generate()->stream());
+                $contents = file_get_contents($this->getAvatarUrl(format: 'png', eyesType: $this->faker->randomElement($this->getAvatarTypeEyes()), mouthType: $this->faker->randomElement($this->getAvatarTypeMouth()), size: 180));
+                Storage::disk('public')->put($name, $contents);
 
                 return $name;
             },
