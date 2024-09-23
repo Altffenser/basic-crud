@@ -61,7 +61,7 @@
         </x-box-module>
 
         <div class="relative border border-blue-500 py-1.5 px-1 rounded text-center">
-            <div class="left-1/2 absolute bottom-[37px] transform -translate-x-1/2 translate-y-1/2 -rotate-45 w-4 h-4 bg-white dark:bg-gray-800 border-t border-r border-blue-500"></div>
+            <div class="left-1/2 absolute top-[-17px] transform -translate-x-1/2 translate-y-1/2 -rotate-45 w-4 h-4 bg-white dark:bg-gray-800 border-t border-r border-blue-500"></div>
             <span class="italic text-blue-500 text-sm">{{ $post->user->profile->bio }}</span>
         </div>
 

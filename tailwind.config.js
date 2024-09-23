@@ -20,6 +20,9 @@ export default {
 
     theme: {
         extend: {
+            transitionProperty: {
+                'hidden': 'hidden',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

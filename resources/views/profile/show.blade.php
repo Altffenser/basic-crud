@@ -164,10 +164,10 @@
         </div>
     </div>
     <div class="grid grid-cols-1 grid-flow-row-dense mx-auto text-center sm:gap-x-5 sm:grid-cols-2 lg:grid-cols-4 sm:text-left items-start">
-        @include('profile.modules.posts')
+        @include('profile.modules.sh-user-posts')
         <div class="col-span-2">
-            @include('profile.modules.wall')
+            @include('profile.modules.sh-user-wall')
         </div>
-        @include('profile.modules.followers')
+        @include('profile.modules.sh-user-followers')
     </div>
 @endsection
