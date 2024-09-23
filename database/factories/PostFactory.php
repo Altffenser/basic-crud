@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Enums\FeaturedStatus;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -31,7 +32,7 @@ class PostFactory extends Factory
             'image' => $this->faker->imageUrl(),
             'content' => $this->faker->randomHtml(),
             'published_at' => $this->faker->dateTimeBetween('-1 month', '+3 months'),
-            'category_id' => CategoryFactory::new(),
+            'category_id' => Category::inRandomOrder()->first(),
             'tags' => $this->faker->randomElements(['Eloquent', 'Blade', 'Migrations', 'Seeding', 'Routing', 'Controllers', 'Middleware', 'Requests', 'Responses', 'Views', 'Forms', 'Validation', 'Mail', 'Notifications'], $this->faker->numberBetween(1, 3)),
             'is_featured' => $this->faker->randomElement(array_column(FeaturedStatus::cases(), 'value')),
             'user_id' => User::factory(),

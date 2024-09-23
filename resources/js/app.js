@@ -5,6 +5,7 @@ import '@tabler/icons-webfont/dist/tabler-icons.css';
 import Alpine from 'alpinejs';
 import Animate from '@charrafimed/alpine-animation'
 import Ajax from "@imacrayon/alpine-ajax";
+import {Tooltip} from "flowbite";
 
 
 window.Alpine = Alpine;

@@ -17,7 +17,7 @@ class StorePublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => ['required', 'max:300', 'min:10'],
+            'content' => ['required', 'max:300', 'min:1'],
             'user_id' => [
                 'required',
                 'exists:users,id',
@@ -25,7 +25,7 @@ class StorePublicationRequest extends FormRequest
             'published_at' => [
                 'required',
                 'exists:users,id',
-            ]
+            ],
         ];
     }
 

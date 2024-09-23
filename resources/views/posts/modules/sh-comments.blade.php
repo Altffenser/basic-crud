@@ -1,13 +1,16 @@
-<div>
+<div class="mt-5">
     <div>
         <form action="{{ route('post.comments.store', ['post' => $post, 'user' => App\Models\User::find(1)]) }}"
               method="POST">
             @csrf
             <input type="hidden" name="post_id" value="{{ $post->id }}">
-            <div class="flex flex-col space-y-2 gap-x-4">
-                <textarea name="content" class="w-full" rows="3"></textarea>
-                <div class="flex justify-end">
-                    <x-button>
+            <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+                <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+                    <label for="content" class="sr-only">Your comment</label>
+                    <textarea id="content" name="content" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea>
+                </div>
+                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                    <x-button color="blue">
                         {{ __('posts.comments.Add Comment') }}
                     </x-button>
                 </div>

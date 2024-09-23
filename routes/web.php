@@ -102,4 +102,4 @@ Route::prefix('resources')->middleware('auth')->group(function () {
  */
 Route::post('publications/', [PublicationController::class, 'store'])->name('publications.store')->middleware('auth');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

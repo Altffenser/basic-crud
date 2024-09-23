@@ -9,6 +9,12 @@ export default {
         './resources/views/**/*.blade.php',
         './node_modules/flowbite/**/*.js',
     ],
+    // Safe list for dynamic Post category variables
+    safelist: [
+        {
+            pattern: /(bg|text|from|to)-(category)-(videogames|news|technology|sports|music|movies|tv|books|travel|fashion|health|downloads|programming)/,
+        },
+    ],
 
     darkMode: 'media',
 
@@ -17,6 +23,23 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'category': {
+                    videogames: '#c18626',
+                    news: '#6200ea',
+                    technology: '#f43d1d',
+                    sports: '#4ff9e0',
+                    music: '#1f91b7',
+                    movies: '#aa1d05',
+                    tv: '#ba1b43',
+                    books: '#03a320',
+                    travel: '#f50057',
+                    fashion: '#c98a04',
+                    health: '#2962ff',
+                    downloads: '#7bf954',
+                    programming: '#ce127d',
+                }
+            }
         },
     },
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->unique();
             $table->string('icon');
+            $table->string('color');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -25,6 +25,7 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->unique()->randomElement(PostCategoryEnum::cases())->getLabel(),
             'icon' => $this->faker->randomElement(PostCategoryEnum::cases())->getIcon(),
+            'color' => $this->faker->randomElement(PostCategoryEnum::cases())->getColor(),
         ];
     }
 }
