@@ -25,6 +25,8 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                oswald: ['Oswald', ...defaultTheme.fontFamily.sans],
+                anton: ['Anton', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'category': {
