@@ -30,7 +30,7 @@ class CommentController extends Controller
         $user = Auth::user();
 
         // Check if the model is allowed
-        if (!in_array($model->getMorphClass(), $this->allowedModels, true)) {
+        if (! in_array($model->getMorphClass(), $this->allowedModels, true)) {
             return redirect()->back()->with('error', 'This model is not allowed to be commented!');
         }
 

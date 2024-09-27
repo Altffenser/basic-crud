@@ -33,6 +33,7 @@ return [
         'Not Featured' => 'Not Featured',
         'Featured' => 'Featured',
         'Edit' => 'Edit',
+        'Report' => 'Report',
         'Delete' => 'Delete',
         'Yes' => 'Yes',
         'No' => 'No',

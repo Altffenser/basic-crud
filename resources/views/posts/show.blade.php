@@ -4,7 +4,7 @@
 @section('content')
     <div class="grid mx-auto sm:gap-x-5 sm:grid-cols-8 sm:text-left items-start">
         {{--        Author card--}}
-        <div class="col-span-2 bg-white dark:bg-gray-800 p-2 h-full flex flex-col space-y-5">
+        <div class="col-span-2 bg-white dark:bg-gray-800 p-2 h-full flex flex-col space-y-5 rounded border border-gray-200 dark:border-gray-600">
             @include('posts.modules.sh-author-card')
             {{--            Paste down new modules--}}
             @include('posts.modules.sh-related-posts')

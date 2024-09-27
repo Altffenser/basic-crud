@@ -68,18 +68,6 @@ Route::middleware('auth')->prefix('profile')->group(function () {
 });
 
 /**
- * COMMENTS ROUTES
- */
-Route::prefix('posts')->group(function () {
-    // Route to store a comment
-    Route::post('{post}/comments', [CommentController::class, 'store'])->name('post.comments.store')->middleware('auth');
-    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('post.comments.destroy')->middleware('auth');
-
-    // Route for store points
-    Route::post('{post}/points', [PointsController::class, 'store'])->name('post.points.store')->middleware('auth', 'pointed');
-});
-
-/**
  * FAVORITES ROUTES
  */
 Route::post('posts/{post}/favorite', [FavoriteController::class, 'store'])->name('post.favorite.store')->middleware('auth');
