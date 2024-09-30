@@ -11,5 +11,6 @@ return [
         'Register' => 'Register',
         'Logout' => 'Logout',
         'Posts' => 'Posts',
+        'Admin' => 'Admin',
     ],
 ];

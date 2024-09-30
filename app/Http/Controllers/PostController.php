@@ -27,7 +27,7 @@ class PostController extends Controller
     {
         // Last posts
         $posts = Post::query()
-            ->select('id', 'title', 'image', 'tags', 'is_featured', 'points', 'category_id', 'user_id', 'created_at', 'updated_at')
+            ->select('id', 'title', 'slug', 'image', 'tags', 'is_featured', 'points', 'category_id', 'user_id', 'created_at', 'updated_at')
             ->withAggregate('category', 'title')
             ->when($request->string('search')->toString(), function (PostBuilder $query, string $search): void {
                 $query->search($search);

@@ -237,6 +237,12 @@
                 <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                     {{ __('navigation.global.Posts') }}
                 </x-nav-link>
+                @auth
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" class="text-red-600 flex items-center space-x-1">
+                        @icon('dashboard')
+                        <span>{{ __('navigation.global.Admin') }}</span>
+                    </x-nav-link>
+                @endauth
             </ul>
         </div>
     </div>

@@ -27,6 +27,7 @@ use Overtrue\LaravelFollow\Traits\Follower;
 use Overtrue\LaravelLike\Traits\Liker;
 use RyanChandler\Comments\Concerns\HasComments;
 use RyanChandler\Comments\Models\Comment;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -49,16 +50,17 @@ use RyanChandler\Comments\Models\Comment;
 class User extends Authenticatable // implements MustVerifyEmail
 {
     use Followable;
-    use Liker;
     use Follower;
     use HasApiTokens;
     use HasComments;
     /** @use HasFactory<UserFactory> */
     use HasFactory;
-
     use HasPoints;
+
     use HasPublications;
 
+    use HasRoles;
+    use Liker;
     use Notifiable;
 
     /**

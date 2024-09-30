@@ -1,5 +1,5 @@
 
-<x-box-content title="Posts relacionados">
+<x-box-content title="Posts relacionados" icon="info-square-rounded" iconColor="pink">
     @foreach($related as $post)
         <li class="flex space-x-1.5 items-center dark:odd:bg-gray-700 rounded p-2">
             <div class="relative w-10 h-10 flex justify-center items-center overflow-hidden bg-gradient-to-br from-transparent to-category-{{ $post->category->color }}/50 rounded-full text-2xl">

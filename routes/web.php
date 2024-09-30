@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\ThemeController as AdminThemeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\FeaturedPostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\PointsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
@@ -31,10 +33,21 @@ Route::get('/set-locale/{locale}', LocaleController::class)->name('set-locale');
 Route::redirect('/', '/posts');
 
 // resource route for posts controller (all routes)
-Route::resource('posts', PostController::class);
+// Ignore the show route and use a custom route instead.
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::resource('posts', PostController::class)->except('show');
+
+// Admin routes
+Route::middleware('auth')->prefix('admin')->group(function () {
+    // Admin dashboard for showing statistics
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    // Admin users, posts, theme,...
+    Route::resource('users', AdminUserController::class)->names('admin.user');
+    Route::resource('posts', AdminPostController::class)->names('admin.post');
+    Route::resource('themes', AdminThemeController::class)->names('admin.theme');
+});
 
 // feature post route (patch request) - only one route needed
-Route::patch('/posts/{post}/feature', FeaturedPostController::class)->name('posts.featured');
 
 // similar to:
 // Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');

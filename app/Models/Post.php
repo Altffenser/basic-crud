@@ -6,7 +6,6 @@ namespace App\Models;
 
 use App\Builders\PostBuilder;
 use App\Enums\FeaturedStatus;
-use App\Enums\PostCategoryEnum;
 use App\Traits\HasFavorites;
 use App\Traits\Pointable;
 use Database\Factories\PostFactory;
@@ -116,6 +115,11 @@ class Post extends Model implements Visitable
             ->where('pointed_type', $this->getMorphClass())
             ->where('user_id', $user->id)
             ->exists();
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 
     //equivalent to the above
