@@ -39,18 +39,11 @@ class DatabaseSeeder extends Seeder
             return;
         }
 
-        //        Category::factory(5)->sequence(
-        //            ['title' => 'Laravel'],
-        //            ['title' => 'PHP'],
-        //            ['title' => 'JavaScript'],
-        //            ['title' => 'Vue.js'],
-        //            ['title' => 'React.js'],
-        //            ['title' => 'Angular.js'],
-        //            ['title' => 'Java'],
-        //            ['title' => 'C#'],
-        //            ['title' => 'C++'],
-        //            ['title' => 'Python'],
-        //        )->has(Post::factory()->count(1)->has(User::factory(1)->has(Profile::factory(1))))->create();
+        $this->call([
+            RolesPermissionSeeder::class,
+        ]);
+
+        // Creates roles and permissions
 
         foreach (PostCategoryEnum::cases() as $category) {
             Category::factory()->create([
