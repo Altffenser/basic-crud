@@ -6,24 +6,27 @@
                     <div class="inline-flex rounded-md shadow-sm" role="group">
                         @for($i = 0; $i < Auth::user()->availablePoints(); $i++)
                             @if($i == 0)
-                                <form method="POST" action="{{ route('post.points.store', ['post' => $post, 'points' => ($i + 1)]) }}">
+                                <form method="POST" action="{{ route('post.points.store', ['post' => $post->id]) }}">
                                     @csrf
+                                    <input type="hidden" name="points" value="{{$i+1}}">
                                     <button type="submit" name="points" value="{{ ($i + 1) }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                         {{ $i + 1 }}
                                     </button>
                                 </form>
                             @endif
                             @if($i > 0 && $i < (auth()->user()->availablePoints() - 1))
-                                <form method="POST" action="{{ route('post.points.store', ['post' => $post, 'points' => ($i + 1)]) }}">
+                                <form method="POST" action="{{ route('post.points.store', ['post' => $post->id]) }}">
                                     @csrf
+                                    <input type="hidden" name="points" value="{{$i+1}}">
                                     <button type="submit" name="points" value="{{ ($i + 1) }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                         {{ $i + 1 }}
                                     </button>
                                 </form>
                             @endif
                             @if($i == (auth()->user()->availablePoints()) - 1)
-                                <form method="POST" action="{{ route('post.points.store', ['post' => $post, 'points' => ($i + 1)]) }}">
+                                <form method="POST" action="{{ route('post.points.store', ['post' => $post->id]) }}">
                                     @csrf
+                                    <input type="hidden" name="points" value="{{$i+1}}">
                                     <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                         {{ $i + 1 }}
                                     </button>
@@ -34,7 +37,7 @@
                     <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Tienes {{ Auth::user()->availablePoints() }} puntos disponibles.</p>
                 @endif
                 @if(Auth::user()->availablePoints() > 15)
-                    <form method="POST" action="{{ route('post.points.store', ['post' => $post]) }}">
+                    <form method="POST" action="{{ route('post.points.store', ['post' => $post->id, 'points' => ($i + 1)]) }}">
                         @csrf
                         <label for="quantity-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dar puntos:</label>
                         <div class="flex space-x-2 justify-start items-center">

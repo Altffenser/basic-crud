@@ -39,11 +39,10 @@ class DatabaseSeeder extends Seeder
             return;
         }
 
+        // Creates roles and permissions
         $this->call([
             RolesPermissionSeeder::class,
         ]);
-
-        // Creates roles and permissions
 
         foreach (PostCategoryEnum::cases() as $category) {
             Category::factory()->create([
@@ -58,9 +57,14 @@ class DatabaseSeeder extends Seeder
             $profile = Profile::factory()->make();
             $user->profile()->associate($profile);
 
+            $user->assignRole('newe');
+
             $posts = Post::factory()->count(5)->create();
 
             $user->posts()->saveMany($posts);
         });
+
+        User::find(1)->syncRoles('admin');
+
     }
 }

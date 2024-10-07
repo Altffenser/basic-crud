@@ -17,10 +17,11 @@
         'teal' => 'text-teal-500',
         'cyan' => 'text-cyan-500',
         'white' => 'text-white',
-    }
+    };
+
 @endphp
 
-<div class="flex flex-row bg-white rounded-lg shadow dark:bg-gray-800 mb-5 border border-gray-200 dark:border-gray-600">
+<div {{ $attributes->merge(['class' => 'flex flex-row bg-white rounded-lg shadow dark:bg-gray-800 mb-5 border border-gray-200 dark:border-gray-600']) }}>
     <ul class="flex flex-col w-full">
         <div class="p-2 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
             <h3 class="text-md font-bold dark:text-white">{{ $title }}</h3>

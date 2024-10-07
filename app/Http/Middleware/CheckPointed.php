@@ -14,6 +14,7 @@ class CheckPointed
 {
     public function handle(Request $request, Closure $next)
     {
+
         $post = Post::find($request->post);
         $user = Auth::user();
 

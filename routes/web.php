@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\PointsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
@@ -38,7 +39,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.s
 Route::resource('posts', PostController::class)->except('show');
 
 // Admin routes
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // Admin dashboard for showing statistics
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     // Admin users, posts, theme,...
@@ -85,6 +86,7 @@ Route::middleware('auth')->prefix('profile')->group(function () {
  */
 Route::post('posts/{post}/favorite', [FavoriteController::class, 'store'])->name('post.favorite.store')->middleware('auth');
 Route::delete('posts/{post}/favorite', [FavoriteController::class, 'destroy'])->name('post.favorite.destroy')->middleware('auth');
+Route::post('posts/{post}/points', [PointsController::class, 'store'])->name('post.points.store')->middleware('auth', 'pointed');
 
 Route::prefix('resources')->middleware('auth')->group(function () {
     /**

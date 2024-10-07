@@ -5,15 +5,15 @@
 
 @php
 $class = implode(' ', [
-    'inline-flex h-9 px-3 items-center justify-center rounded-lg text-sm/6 font-medium bg-[--button-background-color] border border-[--button-border-color]',
+    'font-medium rounded-lg text-sm px-5 py-2.5 shadow',
     // focus
-    'focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500',
+    'focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800',
 ]);
 $colorClass = [
     'blue' => implode(' ', [
-        'text-white [--button-background-color:theme(colors.blue.600)] [--button-border-color:theme(colors.blue.700/80%)]',
+        'text-white bg-blue-700 dark:bg-blue-600',
         // hover
-        'hover:[--button-background-color:theme(colors.blue.600/90%)]'
+        'hover:bg-blue-800 dark:hover:bg-blue-700'
     ]),
     'green' => implode(' ', [
         'text-white [--button-background-color:theme(colors.green.600)] [--button-border-color:theme(colors.green.700/80%)]',

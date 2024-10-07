@@ -8,22 +8,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\View\View;
 use RyanChandler\Comments\Models\Comment;
+use Spatie\Permission\Models\Role;
 
 class DashboardController extends Controller
 {
-    public function index()
+
+    public function index(): View
     {
         /**
-         * Get users, posts, comments and categories count.
+         * Get users, posts, roles, comments and categories count.
          */
 
+        $userRoles = Role::all();
         $usersCount = User::count();
         $postsCount = Post::count();
         $commentsCount = Comment::count();
         $categoriesCount = Category::count();
 
-        return view('admin.dashboard', [
+        return view('admin.pages.dashboard', [
+            'userRoles' => $userRoles,
             'usersCount' => $usersCount,
             'postsCount' => $postsCount,
             'commentsCount' => $commentsCount,

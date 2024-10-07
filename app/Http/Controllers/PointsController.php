@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\CheckPointed;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,9 +13,8 @@ use JetBrains\PhpStorm\NoReturn;
 
 class PointsController extends Controller
 {
-
     /**
-     * @param Request $request <Post,  User>
+     * @param  Request  $request  <Post,  User>
      * @return RedirectResponse
      */
     #[NoReturn]
@@ -31,18 +29,17 @@ class PointsController extends Controller
         }
 
         // Check if user has enough points
-        if ($user->available_points < (int)$request->points) {
+        if ($user->available_points < (int) $request->input('points')) {
             return redirect()->back()->with('error', 'You do not have enough points!');
         }
 
         // Add points to post
-        $post->givePoints((int)$request->points);
+        $post->givePoints((int) $request->input('points'));
 
         // Decrease points from user
         DB::table('users')->where('id', $user->id)->update([
-            'available_points' => $user->available_points - (int)$request->points,
+            'available_points' => $user->available_points - (int) $request->input('points'),
         ]);
-
 
         return redirect()->back()->with('success', 'Points added successfully!');
     }

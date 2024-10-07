@@ -19,6 +19,8 @@ class RolesPermissionSeeder extends Seeder
                 'permissions' => [
                     'all',
                 ],
+                'color' => 'red',
+                'icon' => 'medal-2',
             ],
             'mode' => [
                 'display_name' => __('roles.display_name.mode'),
@@ -34,6 +36,8 @@ class RolesPermissionSeeder extends Seeder
                     'create-status',
                     'hide-status',
                 ],
+                'color' => 'sky',
+                'icon' => 'military-award',
             ],
             'newe' => [
                 'display_name' => __('roles.display_name.newe'),
@@ -42,6 +46,8 @@ class RolesPermissionSeeder extends Seeder
                     'create-post',
                     'comment-post',
                 ],
+                'color' => 'green',
+                'icon' => 'arrow-badge-up',
             ],
             'nefu' => [
                 'display_name' => __('roles.display_name.nefu'),
@@ -52,6 +58,8 @@ class RolesPermissionSeeder extends Seeder
                     'comment-status',
                     'create-status',
                 ],
+                'color' => 'cyan',
+                'icon' => 'badges',
             ],
             'fuus' => [
                 'display_name' => __('roles.display_name.fuus'),
@@ -62,6 +70,8 @@ class RolesPermissionSeeder extends Seeder
                     'comment-status',
                     'create-status',
                 ],
+                'color' => 'purple',
+                'icon' => 'military-rank',
             ],
             'grus' => [
                 'display_name' => __('roles.display_name.grus'),
@@ -72,6 +82,8 @@ class RolesPermissionSeeder extends Seeder
                     'comment-status',
                     'create-status',
                 ],
+                'color' => 'indigo',
+                'icon' => 'mood-crazy-happy',
             ],
         ];
 
@@ -126,11 +138,10 @@ class RolesPermissionSeeder extends Seeder
                 'name' => $name,
                 'display_name' => $role['display_name'],
                 'description' => $role['description'],
+                'color' => $role['color'],
+                'icon' => $role['icon'],
                 'guard_name' => 'web',
             ])->givePermissionTo($role['permissions']);
-
-            Role::findByName('');
-
         }
 
     }

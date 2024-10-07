@@ -1,6 +1,11 @@
 <div class="flex flex-col">
     <div class="flex flex-col justify-center">
-        <x-box-module title="{{ '@' . $post->user->profile->username }}" href="{{ route('profile.show', ['user' => $post->user]) }}" icon="code text-2xl">
+        <x-box-module title="{{ '@' . $post->user->profile->username }}" href="{{ route('profile.show', ['user' => $post->user]) }}"
+                      icon="{{ $post->user->roles->first()->icon }} text-2xl"
+                      subtitle="{{ $post->user->roles->first()->display_name }}"
+                      subtitle-classes="text-{{ $post->user->roles->first()->color }}-500"
+                      icon-classes="bg-{{ $post->user->roles->first()->color }}-500 text-white"
+            >
             <div class="grid sm:gap-x-2 sm:grid-cols-7 sm:text-left auto-cols-max items-start">
                 <div class="col-span-4">
                     <img class="w-44 rounded shadow" src="{{ $post->user->profile->photo }}" alt="">
