@@ -28,6 +28,7 @@ class Profile extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'username',
         'bio',
         'website',
         'github',
