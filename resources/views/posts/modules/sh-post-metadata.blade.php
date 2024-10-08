@@ -16,25 +16,24 @@
     <div class="flex justify-between items-end space-x-10">
         {{--                Boton de favoritos--}}
         @auth
-            <div class="flex">
+            <div class="flex space-x-2.5">
                 <div>
                     @if(!$post->isFavorite())
                         <form method="POST" action="{{ route('post.favorite.store', ['post' => $post]) }}">
                             @csrf
-                            @method('POST')
-                            <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 flex items-center space-x-2">
+                            <x-button type="submit" color="yellow">
                                 @icon('star text-[24px]')
                                 <span>Agregar a favoritos</span>
-                            </button>
+                            </x-button>
                         </form>
                     @else
                         <form method="POST" action="{{ route('post.favorite.destroy', ['post' => $post]) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 flex items-center space-x-2">
+                            <x-button type="submit" color="red">
                                 @icon('star-off text-[24px]')
                                 <span>Quitar de favoritos</span>
-                            </button>
+                            </x-button>
                         </form>
                     @endif
                 </div>
@@ -43,15 +42,15 @@
                         @method('POST')
                         @csrf
                         @if(!$post->isLikedBy(Auth::user()))
-                            <button type="submit" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-blue-900 flex items-center space-x-2">
+                            <x-button type="submit" color="blue">
                                 @icon('thumb-up text-[24px]')
                                 <span>Like</span>
-                            </button>
+                            </x-button>
                         @else
-                            <button type="submit" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-blue-900 flex items-center space-x-2">
+                            <x-button type="submit" color="blue">
                                 @icon('thumb-up-filled text-[24px]')
-                                <span>Unlike</span>
-                            </button>
+                                <span>Liked</span>
+                            </x-button>
                         @endif
                     </form>
                 </div>

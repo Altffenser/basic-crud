@@ -52,7 +52,7 @@
                 <x-button @click="$dispatch('open-modal', 'adminCreateUserModal', {user: {{ $user->toJson() }}})" color="blue">
                     Edit
                 </x-button>
-                <x-button href="{{ route('admin.user.destroy', ['user' => $user]) }}" class="bg-red-500 hover:bg-red-600">
+                <x-button href="{{ route('admin.user.destroy', ['user' => $user]) }}" color="red">
                     Delete
                 </x-button>
             </td>

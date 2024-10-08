@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        $post = Post::find(request('post'));
+
         $user = User::find(Auth::id());
+
 
         // Check if the post is already favorited by the user
         if ($post->isFavorite($user)) {
@@ -27,9 +28,8 @@ class FavoriteController extends Controller
         return redirect()->back()->with('success', 'Post added to your favorites!');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Post $post)
     {
-        $post = Post::find(request('post'));
         $user = User::find(Auth::id());
 
         $post->unfavorite($user);
