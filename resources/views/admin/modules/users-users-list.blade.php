@@ -21,7 +21,7 @@
         </th>
     </tr>
     </thead>
-    <tbody>
+    <tbody x-init @ajax:before="$dispatch('dialog:open')" @contact:updated="$ajax('/contacts')">
     @foreach($users as $user)
         <tr class="bg-white border-b last:border-0 dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
@@ -48,8 +48,8 @@
             <td class="px-6 py-4">
                 {{ $user->roles->first()->display_name ?? "Ninguno" }}
             </td>
-            <td class="px-6 py-4 flex space-x-2.5" x-data="{user: null}">
-                <x-button @click="$dispatch('open-modal', 'adminCreateUserModal', {user: {{ $user->toJson() }}})" color="blue">
+            <td class="px-6 py-4 flex space-x-2.5" x-init @ajax:before="$dispatch('dialog:open')">
+                <x-button href="{{ route('admin.user.edit', $user->id) }}" x-target="contact" color="blue">
                     Edit
                 </x-button>
                 <x-button href="{{ route('admin.user.destroy', ['user' => $user]) }}" color="red">
@@ -60,3 +60,8 @@
     @endforeach
     </tbody>
 </table>
+
+<dialog x-init @dialog:open.window="$el.showModal()">
+  <div id="contact"></div>
+  <form method="dialog" novalidate><button>Close</button></form>
+</dialog>

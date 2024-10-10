@@ -1,8 +1,8 @@
 @php
     $class = implode(' ', [
-        'appearance-none block w-full rounded-lg bg-white border text-sm/6 h-9 px-3 border-zinc-950/10',
+        'appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white',
         // focus
-        'focus:border-zinc-950/20 focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-blue-500',
+        'focus:ring-blue-500 focus:border-blue-500 block dark:focus:ring-blue-500 dark:focus:border-blue-50',
         // hover
         'hover:border-zinc-950/20',
     ]);

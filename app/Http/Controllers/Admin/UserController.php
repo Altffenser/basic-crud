@@ -9,12 +9,13 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.users', [
+        return view('admin.sections.users', [
             'users' => User::query()->paginate(15),
         ]);
     }
@@ -34,5 +35,27 @@ class UserController extends Controller
         ])->assignRole($request->role);
 
         return redirect()->back()->with('success', 'User created successfully!');
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.pages.users-user-edit', [
+            'user' => $user,
+            'roles' => Role::query()->pluck('display_name', 'id'),
+        ]);
+    }
+
+    public function update(User $user, Request $request): RedirectResponse
+    {
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'available_points' => $request->available_points,
+        ]);
+
+        $user->syncRoles($request->role);
+
+        return redirect(route('admin.user.show'))->with('success', 'User updated successfully!');
     }
 }

@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $commentsCount = Comment::count();
         $categoriesCount = Category::count();
 
-        return view('admin.pages.dashboard', [
+        return view('admin.sections.dashboard', [
             'userRoles' => $userRoles,
             'usersCount' => $usersCount,
             'postsCount' => $postsCount,

@@ -5,9 +5,9 @@
     </x-button>
     {{--                New user modal form--}}
     <x-dialog-modal name="adminCreateUserModal">
-        <x-slot name="title">
+        <x-slot:title>
             New user
-        </x-slot>
+        </x-slot:title>
         <x-slot:content>
             <form action="{{ route('admin.user.store') }}" method="POST" id="admin_user_store">
                 @csrf
@@ -33,11 +33,11 @@
                     <div class="grid grid-cols-2 gap-5">
                         <div class="flex flex-col">
                             <x-input-label for="role" value="Role"/>
-                            <select id="role" name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50" required>
+                            <x-select id="role" name="role" required>
                                 @foreach($roles as $role)
                                     <option value="{{ $role->name }}">{{ $role->display_name }}</option>
                                 @endforeach
-                            </select>
+                            </x-select>
                         </div>
                         <div class="flex flex-col">
                             <x-input-label for="available_points" value="Available points"/>
@@ -48,7 +48,7 @@
             </form>
         </x-slot:content>
         <x-slot name="footer">
-            <x-button @click="$dispatch('close-modal', 'adminUserCreateModal')" color="red">
+            <x-button @click="$dispatch('close-modal', 'adminCreateUserModal')" color="red">
                 Cancel
             </x-button>
             <x-button type="submit" color="blue" form="admin_user_store">
