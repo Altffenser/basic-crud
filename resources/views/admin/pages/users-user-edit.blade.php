@@ -1,5 +1,5 @@
 {{--Form for edit existing user--}}
-<form action="{{ route('admin.user.store') }}" method="POST" id="admin_user_store">
+<form id="contact" x-target method="patch" action="{{ route('admin.user.update', ['user' => $user]) }}">
     @csrf
     <div class="grid grid-cols-1 gap-6">
         <div class="grid grid-cols-2 gap-5">
@@ -18,7 +18,7 @@
         </div>
         <div class="flex flex-col relative">
             <x-input-label for="password" value="New password"/>
-            <x-text-input id="password" name="password" type="password" required/>
+            <x-text-input id="password" name="password" type="password"/>
         </div>
         <div class="grid grid-cols-2 gap-5">
             <div class="flex flex-col">
@@ -35,4 +35,7 @@
             </div>
         </div>
     </div>
+    <button>
+        Update
+    </button>
 </form>

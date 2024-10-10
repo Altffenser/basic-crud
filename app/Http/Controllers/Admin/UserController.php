@@ -41,12 +41,13 @@ class UserController extends Controller
     {
         return view('admin.pages.users-user-edit', [
             'user' => $user,
-            'roles' => Role::query()->pluck('display_name', 'id'),
+            'roles' => Role::query()->pluck('display_name', 'name'),
         ]);
     }
 
-    public function update(User $user, Request $request): RedirectResponse
+    public function update(User $user, Request $request)
     {
+
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -56,6 +57,11 @@ class UserController extends Controller
 
         $user->syncRoles($request->role);
 
-        return redirect(route('admin.user.show'))->with('success', 'User updated successfully!');
+        return to_route('admin.user.index')->with('success', 'User updated successfully!');
+    }
+
+    public function show(User $user)
+    {
+        return to_route('admin.user.index')->with('success', 'User updated successfully!');
     }
 }
